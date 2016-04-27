@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Medvslav_News2 extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Medvslav
+ * @package        Medvslav_News2
+ * @copyright      Copyright (c) 2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <medvslav_news2 translate="title" module="medvslav_news2">
+                                        <title>News2</title>
+                                    </medvslav_news2>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <medvslav_news2 translate="title" module="medvslav_news2">
+                        <title>News2</title>
+                        <children>
+                            <author translate="title" module="medvslav_news2">
+                                <title>Author</title>
+                                <sort_order>0</sort_order>
+                            </author>
+                            <newscategory translate="title" module="medvslav_news2">
+                                <title>Newscategory</title>
+                                <sort_order>10</sort_order>
+                            </newscategory>
+                            <article translate="title" module="medvslav_news2">
+                                <title>Article</title>
+                                <sort_order>20</sort_order>
+                            </article>
+                            <article_comments translate="title" module="medvslav_news2">
+                                <title>Manage Article Comments</title>
+                                <sort_order>25</sort_order>
+                            </article_comments>
+                        </children>
+                    </medvslav_news2>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <medvslav_news2 translate="title" module="medvslav_news2">
+            <title>News2</title>
+            <sort_order>71</sort_order>
+            <children>
+                <author translate="title" module="medvslav_news2">
+                    <title>Author</title>
+                    <action>adminhtml/news2_author</action>
+                    <sort_order>0</sort_order>
+                </author>
+                <newscategory translate="title" module="medvslav_news2">
+                    <title>Newscategory</title>
+                    <action>adminhtml/news2_newscategory</action>
+                    <sort_order>10</sort_order>
+                </newscategory>
+                <article translate="title" module="medvslav_news2">
+                    <title>Article</title>
+                    <action>adminhtml/news2_article</action>
+                    <sort_order>20</sort_order>
+                </article>
+                <article_comments translate="title" module="medvslav_news2">
+                    <title>Manage Article Comments</title>
+                    <action>adminhtml/news2_article_comment</action>
+                    <sort_order>24</sort_order>
+                </article_comments>
+            </children>
+        </medvslav_news2>
+    </menu>
+</config>

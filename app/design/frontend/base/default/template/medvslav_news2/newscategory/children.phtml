@@ -1,0 +1,50 @@
+<?php
+/**
+ * Medvslav_News2 extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Medvslav
+ * @package        Medvslav_News2
+ * @copyright      Copyright (c) 2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Newscategory children list template
+ *
+ * @category    Medvslav
+ * @package     Medvslav_News2
+ * @author      Medvslav
+ */
+?>
+<?php $_newscategories = $this->getNewscategories(); ?>
+<?php if ($_newscategories->getSize() > 0) :?>
+    <div class="page-title newscategory-title">
+        <h2><?php echo $this->getCurrentNewscategory()->getName(); ?>:<?php echo $this->__('Children')?></h2>
+    </div>
+    <?php if ($this->_getDisplayMode() == 0) : ?>
+        <div class="newscategory-list-container">
+            <?php foreach ($_newscategories as $_newscategory) : ?>
+                <div class="newscategory-list-item">
+                    <a href="<?php echo $_newscategory->getNewscategoryUrl();?>" title="<?php echo $this->escapeHtml($_newscategory->getName()) ?>">
+                        <?php echo $_newscategory->getName(); ?>
+                    </a>
+                </div>
+            <?php endforeach;?>
+        </div>
+    <?php else : ?>
+        <ul id="newscategories-list">
+            <?php foreach ($_newscategories as $_newscategory) : ?>
+                <?php echo $this->drawNewscategory($_newscategory);?>
+            <?php endforeach;?>
+        </ul>
+        <script type="text/javascript">
+            news2Tree('newscategories-list');
+        </script>
+    <?php endif;?>
+<?php endif;?>

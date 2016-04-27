@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Medvslav_News2 extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Medvslav
+ * @package        Medvslav_News2
+ * @copyright      Copyright (c) 2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+--> 
+<layout>
+    <adminhtml_news2_author_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>medvslav_news2/author</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="medvslav_news2/adminhtml_author" name="author" />
+
+        </reference>
+    </adminhtml_news2_author_index>
+    <adminhtml_news2_author_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="medvslav_news2/adminhtml_author_grid" name="author_grid"/>
+        </block>
+    </adminhtml_news2_author_grid>
+    <!-- Author add/edit action -->
+    <adminhtml_news2_author_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>medvslav_news2/author</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="medvslav_news2/adminhtml_author_edit" name="author_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="medvslav_news2/adminhtml_author_edit_tabs" name="author_tabs"></block>
+        </reference>
+    </adminhtml_news2_author_edit>
+
+    <adminhtml_news2_article_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>medvslav_news2/article</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="medvslav_news2/adminhtml_article" name="article" />
+
+        </reference>
+    </adminhtml_news2_article_index>
+    <adminhtml_news2_article_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="medvslav_news2/adminhtml_article_grid" name="article_grid"/>
+        </block>
+    </adminhtml_news2_article_grid>
+    <!-- Article add/edit action -->
+    <adminhtml_news2_article_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>medvslav_news2/article</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="medvslav_news2/adminhtml_article_edit" name="article_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="medvslav_news2/adminhtml_article_edit_tabs" name="article_tabs"></block>
+        </reference>
+    </adminhtml_news2_article_edit>
+
+    <adminhtml_news2_article_catalog_product_articles>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="medvslav_news2/adminhtml_catalog_product_edit_tab_article" name="product.edit.tab.article"/>
+            <block type="adminhtml/widget_grid_serializer" name="article_grid_serializer">
+                <reference name="article_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>product.edit.tab.article</grid_block_name>
+                        <data_callback>getSelectedArticles</data_callback>
+                        <hidden_input_name>articles</hidden_input_name>
+                        <reload_param_name>product_articles</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_news2_article_catalog_product_articles>
+    <adminhtml_news2_article_catalog_product_articlesgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="medvslav_news2/adminhtml_catalog_product_edit_tab_article" name="product.edit.tab.article"/>
+        </block>
+    </adminhtml_news2_article_catalog_product_articlesgrid>
+    <adminhtml_news2_article_products>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="medvslav_news2/adminhtml_article_edit_tab_product" name="article.edit.tab.product"/>
+            <block type="adminhtml/widget_grid_serializer" name="product_grid_serializer">
+                <reference name="product_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>article.edit.tab.product</grid_block_name>
+                            <data_callback>getSelectedProducts</data_callback>
+                            <hidden_input_name>products</hidden_input_name>
+                            <reload_param_name>article_products</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_news2_article_products>
+    <adminhtml_news2_article_productsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="medvslav_news2/adminhtml_article_edit_tab_product" name="article.edit.tab.product"/>
+        </block>
+    </adminhtml_news2_article_productsgrid>
+    <adminhtml_news2_article_categories>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="medvslav_news2/adminhtml_article_edit_tab_categories" name="article.edit.tab.categories"/>
+        </block>
+    </adminhtml_news2_article_categories>
+    <adminhtml_news2_article_catalog_category_articlesgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="medvslav_news2/adminhtml_catalog_category_tab_article" name="category.edit.tab.article"/>
+        </block>
+    </adminhtml_news2_article_catalog_category_articlesgrid>
+    <adminhtml_news2_newscategory_edit>
+        <update handle="editor"/>
+        <reference name="left">
+            <block name="newscategory.tree" type="medvslav_news2/adminhtml_newscategory_tree" />
+        </reference>
+        <reference name="content">
+            <block name="newscategory.edit" type="medvslav_news2/adminhtml_newscategory_edit" template="medvslav_news2/newscategory/edit.phtml" />
+        </reference>
+        <reference name="js">
+            <block type="core/template" template="catalog/wysiwyg/js.phtml" name="catalog.wysiwyg.js" />
+        </reference>
+    </adminhtml_news2_newscategory_edit>
+    <adminhtml_news2_article_comment_index>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>medvslav_news2/article_comment</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="medvslav_news2/adminhtml_article_comment" name="article_comment_grid"/>
+        </reference>
+    </adminhtml_news2_article_comment_index>
+    <adminhtml_news2_article_comment_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="medvslav_news2/adminhtml_article_comment_grid" name="article_comment_grid"/>
+        </block>
+    </adminhtml_news2_article_comment_grid>
+    <adminhtml_news2_article_comment_edit>
+        <update handle="editor"/>
+        <reference name="menu">
+            <action method="setActive">
+                <menupath>medvslav_news2/article_comment</menupath>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="medvslav_news2/adminhtml_article_comment_edit" name="article_comment_edit"></block>
+        </reference>
+        <reference name="left">
+            <block type="medvslav_news2/adminhtml_article_comment_edit_tabs" name="article_comment_tabs"></block>
+        </reference>
+    </adminhtml_news2_article_comment_edit>
+</layout>

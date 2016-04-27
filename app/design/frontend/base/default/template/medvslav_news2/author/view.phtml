@@ -1,0 +1,40 @@
+<?php
+/**
+ * Medvslav_News2 extension
+ * 
+ * NOTICE OF LICENSE
+ * 
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ * 
+ * @category       Medvslav
+ * @package        Medvslav_News2
+ * @copyright      Copyright (c) 2016
+ * @license        http://opensource.org/licenses/mit-license.php MIT License
+ */
+/**
+ * Author view template
+ *
+ * @category    Medvslav
+ * @package     Medvslav_News2
+ * @author      Medvslav
+ */
+?>
+<?php $_author = $this->getCurrentAuthor();?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title author-title">
+    <h1><?php echo $_author->getName(); ?></h1>
+</div>
+<div class="author-view">
+    <div class="author-name">
+        <?php echo Mage::helper('medvslav_news2')->__('Name');?>:<?php echo $_author->getName();?>
+
+    </div>
+    <div class="author-description">
+        <?php echo Mage::helper('medvslav_news2')->__('Description');?>:<?php echo $_author->getDescription();?>
+
+    </div>
+
+</div>
